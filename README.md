@@ -105,13 +105,13 @@ Create a new API route that handles:
 
 ### 3. Requirements Checklist
 
-- [ ] AI generates appropriate Primary 5 level math problems
-- [ ] Problems and answers are saved to Supabase
-- [ ] User submissions are saved with feedback
-- [ ] AI generates helpful, personalized feedback
-- [ ] UI is clean and mobile-responsive
-- [ ] Error handling for API failures
-- [ ] Loading states during API calls
+- [x] AI generates appropriate Primary 5 level math problems
+- [x] Problems and answers are saved to Supabase
+- [x] User submissions are saved with feedback
+- [x] AI generates helpful, personalized feedback
+- [x] UI is clean and mobile-responsive
+- [x] Error handling for API failures
+- [x] Loading states during API calls
 
 ## Deployment
 
@@ -130,30 +130,58 @@ When submitting your assessment, provide:
 2. **Live Demo URL**: Your Vercel deployment
 3. **Supabase Credentials**: Add these to your README for testing:
    ```
-   SUPABASE_URL: [Your Supabase Project URL]
-   SUPABASE_ANON_KEY: [Your Supabase Anon Key]
+   SUPABASE_URL: https://qxpfjkkbsptfodxuenah.supabase.co
+   SUPABASE_ANON_KEY: sb_publishable_9UGN0DooklXRFZC3dUEXuw_UMuU4KSC
    ```
 
 ## Implementation Notes
 
-*Please fill in this section with any important notes about your implementation, design decisions, challenges faced, or features you're particularly proud of.*
-
 ### My Implementation:
 
-- 
-- 
-- 
+**Tech Stack & APIs:**
+
+- Built with Next.js 14 App Router and TypeScript for type safety
+- Integrated Google Gemini AI (gemini-2.0-flash) for problem generation and personalized feedback
+- Supabase for database with Row Level Security policies enabled
+- Tailwind CSS for responsive, modern UI design
+
+**Key Features Implemented:**
+
+- **AI-Powered Problem Generation**: Dynamic word problems with configurable difficulty (Easy/Medium/Hard) and problem types (Addition, Subtraction, Multiplication, Division, Mixed)
+- **Intelligent Feedback System**: AI generates personalized, age-appropriate feedback based on student answers
+- **Gamification**: Score tracking system with visual progress bar, difficulty-based points (1-3 pts), hint penalty system (-1 pt), and confetti animation on correct answers
+- **Solution Support**: Hint system and step-by-step solution explanations returned from AI
+- **History Tracking**: Full problem and submission history with timestamps via `/api/history` endpoint
+- **Database Design**: Two-table schema with foreign key relationships and proper indexing for performance
+
+**Design Decisions:**
+
+- Used Gemini 2.0 Flash for faster response times while maintaining quality
+- Implemented client-side score tracking using localStorage for persistence across sessions
+- Added hint penalty system to encourage independent problem-solving
+- Database schema includes additional columns (difficulty, problem_type, hint, solution_steps) beyond base requirements for enhanced features
+
+**Challenges Overcome:**
+
+- Parsing AI-generated JSON responses reliably by cleaning markdown code blocks
+- Implementing proper error handling and loading states for better UX
+- Creating a responsive UI that works seamlessly on mobile and desktop devices
+- Designing a scoring system that balances encouragement with challenge
 
 ## Additional Features (Optional)
 
-If you have time, consider adding:
+Implemented additional features:
 
-- [ ] Difficulty levels (Easy/Medium/Hard)
-- [ ] Problem history view
-- [ ] Score tracking
-- [ ] Different problem types (addition, subtraction, multiplication, division)
-- [ ] Hints system
-- [ ] Step-by-step solution explanations
+- [x] Difficulty levels (Easy/Medium/Hard)
+- [x] Problem history view
+- [x] Score tracking with progress bar
+- [x] Different problem types (addition, subtraction, multiplication, division, mixed)
+- [x] Hints system (with point deduction)
+- [x] Step-by-step solution explanations
+- [x] Confetti animation on correct answers
+- [x] Score reset functionality
+- [x] Visual scoring system (Easy: 1pt, Medium: 2pts, Hard: 3pts)
+- [x] Penalty system for using hints (-1 point)
 
 ---
 
